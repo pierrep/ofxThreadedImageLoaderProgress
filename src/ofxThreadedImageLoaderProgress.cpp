@@ -1,4 +1,5 @@
 #include "ofxThreadedImageLoaderProgress.h"
+#include "ofMain.h"
 #include <sstream>
 ofxThreadedImageLoader::ofxThreadedImageLoader()
 {
@@ -114,4 +115,15 @@ float ofxThreadedImageLoader::getProgress()
 
     float progress = 1.0f - static_cast<float>(numEntries) / static_cast<float>(totalEntries);
     return progress;
+}
+
+void ofxThreadedImageLoader::draw()
+{
+    const int bar_height = 10;
+    const int curve = 5;
+
+    ofSetColor(238,238,238);
+    ofDrawRectRounded(ofGetWidth() / 2 - ofGetWidth() / 4, ofGetHeight() / 2, 0, ofGetWidth() / 2, bar_height, curve);
+    ofSetColor(91, 184, 93);
+    ofDrawRectRounded(ofGetWidth() / 2 - ofGetWidth() / 4, ofGetHeight() / 2, 1, getProgress() * (ofGetWidth() / 2), bar_height, curve);
 }

@@ -17,6 +17,7 @@ public:
 	void loadFromDisk(ofImage& image, string file);
 	void loadFromURL(ofImage& image, string url);
     float getProgress();
+    void draw();
 
 private:
 	void update(ofEventArgs & a);
